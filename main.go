@@ -488,7 +488,7 @@ func typeDisplayName(t *types.Type, c generatorConfig, typePkgMap map[*types.Typ
 		// noop
 	case types.Map:
 		// return original name
-		return t.Name.Name
+		return fmt.Sprintf("map[%s]%s", typeDisplayName(t.Key, c, typePkgMap), typeDisplayName(t.Elem, c, typePkgMap))
 	case types.DeclarationOf:
 		// For constants, we want to display the value
 		// rather than the name of the constant, since the
